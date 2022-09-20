@@ -1,6 +1,7 @@
 function main() {
     const prompt = require("prompt-sync")({ sigint: true });
     const word = "hangman";
+    let won = false;
     let lives = 5;
     const used = [];
     while (lives > 0) {
@@ -9,7 +10,7 @@ function main() {
             console.log("Invalid input.");
             continue;
         }
-        if(used.includes(input)) {
+        if (used.includes(input)) {
             console.log(`${input} is already used`);
             continue;
         }
@@ -21,6 +22,12 @@ function main() {
             lives--;
             console.log(`Wrong. Lives ${lives}`);
         }
+    }
+    if (won) {
+        console.log("Congratulations! You won!");
+    }
+    else {
+        console.log(`You lost. The word is ${word}.`)
     }
 }
 
